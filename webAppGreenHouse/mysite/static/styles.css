@@ -1,0 +1,604 @@
+:root {
+  --base-color: white;
+  --base-variant: #e8e9ed;
+  --text-color: black;
+  --primary-color: #3a435d;
+  --secondaary-color: #232738;
+}
+/*--------------------Area Dark Mode--------------------*/
+.darkmode {
+  --base-color: black;
+  --base-variant: #101425;
+  --text-color: white;
+  --primary-color: #3a435d;
+  --secondary-color: #a4a5b8;
+}
+/* Tema Switch */
+#theme-switch {
+  height: 50px;
+  width: 50px;
+  padding: 0;
+  border-radius: 50%;
+  background-color: var(--base-variant);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
+/* Nascondi una delle due immagini */
+.theme-icon {
+  height: 24px;
+  width: 24px;
+  display: none;
+}
+
+.theme-icon.moon-icon {
+  display: block; /* Mostra la luna di default */
+}
+
+.darkmode .theme-icon.moon-icon {
+  display: none; /* Nascondi la luna in modalità scura */
+}
+
+.darkmode .theme-icon.sun-icon {
+  display: block; /* Mostra il sole in modalità scura */
+}
+
+
+/*--------------------Area Site--------------------*/
+body {
+font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/*--------------------Area Menu--------------------*/
+.navbar {
+  overflow: visible; /* Cambiato da hidden per permettere ai sottomenu di uscire */
+  background-color: black; !important;
+  width: 100%;
+  position: relative; /* Necessario per attivare lo z-index */
+  z-index: 2000;
+  display: flow-root; /* Questo sostituisce l'overflow:hidden per contenere i float senza tagliare i sottomenu */
+  min-height: 50px;
+}
+
+.navbar a {
+  float: left;
+  font-size: 20px;
+  color: white; !important;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.subnav {
+  float: left;
+  overflow: hidden;
+  width: 400px;
+  text-align:center;
+}
+
+.subnav .subnavbtn {
+  font-size: 20px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+  width:100%;
+}
+
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: #737373;
+}
+
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color:  #737373; !important;
+  width: 100%;
+  z-index:2001;
+}
+
+.subnav-content a {
+  float: left;
+  color: white;
+  text-decoration: none;
+  width: 150px;
+}
+
+.subnav-content a:hover {
+  background-color:  #737373;
+  color: black;
+}
+
+.subnav:hover .subnav-content {
+  display: block;
+}
+
+div.areaTitolo {
+  width:100%;
+  height:80px;
+}
+
+/*--------------------Area Title--------------------*/
+div.areaTitolo  h1 {
+  font-size: 40px;
+  width: 600px;
+  height:60px;
+  left:40px;
+  top:100px;
+  position:absolute;
+  float:left
+}
+
+div.areaTitolo  select {
+  width: 100px;
+  height:20px;
+  top:150px;
+  left: 790px;
+  position:absolute;
+  float:left
+}
+
+div.areaTitolo  label{
+  top:150px;
+  width: 150px;
+  height:20px;
+  left:640px;
+  position:absolute;
+  float:left
+}
+
+#titoloHome {
+  left: 200px;
+  top:100px;
+}
+
+/*--------------------Area Home--------------------*/
+div.areaTesto{
+  top:200px;
+  width: 1500px;
+  height: 1000px;
+  position:absolute;
+  left:40px;
+}
+
+div.areaTesto h2{
+  width:500px;
+}
+
+div.areaTesto p{
+  width:700px;
+}
+
+#immagine1home{
+  flex: 1;
+  max-width: 100%;
+  height: auto;
+}
+
+#immagine1Label{
+  left:1000px;
+  top:0px;
+  position:absolute;
+}
+
+/*--------------------Area Graphic--------------------*/
+div.areaGrafici {
+  width:100%;
+  height:800px;
+  top:150px;
+  position:absolute;
+}
+
+h3.graficoLSTM {
+  top:50px;
+  position:absolute;
+  left:100px;
+}
+
+img.graficoLSTM{
+  top:100px;
+  position:absolute;
+  left:20px;
+}
+img.schemaLSTMHome{
+  top:00px;
+  position:absolute;
+  left:1000px;
+}
+
+h3.graficoLSTMCNN {
+  top:50px;
+  position:absolute;
+  left:800px;
+}
+
+img.graficoLSTMCNN{
+  top:100px;
+  position:absolute;
+  left:720px;
+}
+
+h3.graficoCNNLSTM {
+  top:550px;
+  position:absolute;
+  left:100px;
+}
+
+img.graficoCNNLSTM{
+  top:600px;
+  position:absolute;
+  left:20px;
+}
+
+h3.graficoLSTMCNNPar {
+  top:550px;
+  position:absolute;
+  left:800px;
+}
+
+img.graficoLSTMCNNPar{
+  top:600px;
+  position:absolute;
+  left:720px;
+}
+img.schemaCNNHome{
+  top:440px;
+  position:absolute;
+  left:1040px;
+}
+
+
+/*--------------------General HTML--------------------*/
+h1 {
+  margin: 20px 0;
+  text-align: center;
+}
+
+p{
+  margin-top: 30px;
+  opacity: 0.7;
+}
+
+/*--------------------Area Map / Legend Map / Loading SVG --------------------*/
+#map {
+  position: relative;
+  width: 1500px;
+  height: 500px;
+  z-index :1;
+}
+
+#legend{
+  position: absolute;
+  bottom: -30px;
+  left: 1px;
+  width: 125px;
+  height: 180px;
+  z-index: 1000;
+  margin-bottom: 30px;
+  margin-right: 10px;
+  /*background:white;*/
+  border-radius: 5px;
+  line-height: 24px;
+  padding: 6px 8px;
+}
+
+.legend i {
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin: 0 8px 0 0;
+  opacity: 0.7;
+}
+
+.legend h4 {
+  text-align: center;
+  font-size: 16px;
+  margin: 2px 12px 8px;
+  color: #777;
+}
+
+#loading-overlay {
+  display: none; /* attivato dal JS */
+  position: fixed;
+  z-index: 9999;
+
+  /* in basso a destra */
+  bottom: 20px;
+  right: 20px;
+
+  /* Dimensioni da Easter Egg (piccolo) */
+  width: 80px;
+  height: 80px;
+
+  /* Estetica: lo rende più discreto */
+  border: none;
+  border-radius: 50%;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+#loading-overlay:hover {
+  opacity: 1;
+}
+
+/*--------------------Area Button / ChooseBox / Label -------------------- */
+.buttonContainer {
+  position: relative; /* Il contenitore è il riferimento per la posizione del bottone */
+}
+
+/*-----Button Reset-----*/
+#reset {
+  position: absolute;
+  bottom: 420px;
+  left: 1630px;
+  text-align: center;
+}
+
+/*-----Choose Date / Label-----*/
+#labelData{
+  position: absolute;
+  bottom: 370px;
+  left: 1530px;
+  text-align: center;
+}
+
+#chooseData{
+  position: absolute;
+  bottom: 340px;
+  left: 1530px;
+  text-align: center;
+}
+#labelDataEnd{
+  position: absolute;
+  bottom: 370px;
+  left: 1700px;
+  text-align: center;
+}
+
+#chooseDataEnd{
+  position: absolute;
+  bottom: 340px;
+  left: 1700px;
+  text-align: center;
+}
+
+/*-----Choose Time / Label-----*/
+#labelTime{
+  position: absolute;
+  bottom: 260px;
+  left: 1530px;
+  text-align: center;
+}
+
+#time{
+  position: absolute;
+  bottom: 230px;
+  left: 1630px;
+}
+
+/*-----Choose Model / Label-----*/
+#labelModel{
+  position: absolute;
+  bottom: 150px;
+  left: 1530px;
+  text-align: center;
+}
+#model{
+  position: absolute;
+  bottom: 120px;
+  left: 1630px;
+  text-align: center;
+}
+#updateMapBtn{
+  position: absolute;
+  bottom:40px;
+  left: 1630px;
+}
+
+/*--------------------Area Slider--------------------*/
+.SlideContainer{
+  position: absolute;
+  width: 370px;
+  left: 500px;
+  bottom: 25%;
+}
+.slider{
+  --webkit-appearance: nome;
+  width: 350px;
+  height: 10px;
+  background: linear-gradient(90deg, rbg(117,252,117) 60%, rgb(214,214,214) 60%);
+  outline:none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  border-radius:12px;
+  box-shadow: 1px 1px 10px 1px black;
+}
+
+#sliderSpeed{
+  position: relative;
+  bottom: 17px;
+  left: 360px;
+}
+
+.slider::after{
+  content: attr(data-max);
+  color: black;
+  font-size: 1rem ;
+  position: absolute;
+  right: 0px;
+  bottom: 70px;
+}
+
+.slider::before{
+  position: absolute;
+  content: '0';
+  color: black;
+  font-size: 1rem ;
+  left: 0px;
+  bottom: 70px;
+}
+
+#playButton{
+    position: relative;
+    bottom: 35px;
+    left: 90px;
+}
+#timeIstantDate{
+    position: relative;
+    bottom: 35px;
+    left: 110px;
+}
+.leaflet-heatmap-layer {
+  opacity: 0.8;
+}
+
+/*--------------------Area Mean--------------------*/
+/* Contenitore principale per racchiudere tutto */
+.main-container {
+  display: flex;
+  align-items: flex-start;
+  margin-left: 50px;
+  gap: 2px;
+}
+
+/* Stile Flexbox per allineare tutto in fila */
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+/* Stile per il contenitore orizzontale dei controlli */
+.controls-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Tooltip-container in fila */
+.tooltip-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Stile per l'icona informativa "i" */
+.info-icon {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Tooltip aggiornato */
+.tooltip-text {
+  visibility: hidden;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 10px;
+  position: absolute;
+  top: 30px; /* Distanza dal bottone "i" */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s;
+  white-space: nowrap; /* Impedisce il testo su più righe */
+  font-size: 14px;
+  line-height: 1.5;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Aggiunge un'ombra per migliorare la visibilità */
+  overflow: hidden; /* Impedisce al testo di uscire dai bordi */
+}
+
+/* Espande il contenitore se necessario */
+.info-icon:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+  overflow-x: auto; /* Consente uno scroll orizzontale se il testo è troppo lungo */
+  max-width: 90vw; /* Evita che il tooltip esca dalla larghezza dello schermo */
+}
+
+/* Freccetta del tooltip */
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+/* Immagine inizialmente nascosta */
+/*.tooltip-image {
+  display: none;
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+  width: 100px;
+  height: auto;
+  z-index: 1;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}*/
+
+
+/*--------------------Area Table--------------------*/
+#tableDiv {
+  position: absolute;
+  width: 700px;
+  height: 100px;
+  bottom: 15%;
+  left: 24%;
+  overflow: auto;
+}
+
+table {
+  position: relative;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: auto;
+}
+
+#tableSensors {
+  position: relative;
+  bottom: 0;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}

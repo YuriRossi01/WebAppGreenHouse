@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Homepage</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"-->
+<!--          rel="stylesheet"-->
+<!--          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"-->
+<!--          crossorigin="anonymous">-->
+    <!-- Add additional CSS in static file -->
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+
+<body>
+<!--    <h1> Progetto di Tirocinio A.A 2023/2024 <span> Fatto da Leonardo Conti e Rossi Yuri </span><span>diretto da Sara Migliolini</span></h1>-->
+<div class="navbar">
+
+    <a class="subnav" href="../home">Home</a>
+
+    <div class="subnav">
+        <button class="subnavbtn">Previsioni <i class="fa fa-caret-down"></i></button>
+        <div class="subnav-content">
+            <a href="/forecastIstant">Istante di tempo</a>
+            <a href="/forecast">24 ore</a>
+            <a href="/forecastDays">Intervallo di date</a>
+        </div>
+    </div>
+
+    <a class="subnav" href="../plot">Grafici</a>
+
+    <a class="subnav" href="../autori">Autori</a>
+
+</div>
+<div class="areaTitolo">
+    <h1 id="titoloHome">Homepage</h1>
+</div>
+<div class="areaTesto">
+    <h2>Sintesi web-application</h2>
+    <p>Questa web application utilizza più reti neurali per prevedere la temperatura che 8 sensori all'interno di una serra misureranno,
+        utilizzando dati per un periodo di 6 mesi per ogni sensore (dall'agosto 2021 fino al gennaio 2022 compresi).<br><br>
+        La web application offre 3 opzioni:
+        <ul>
+            <li>Richiesta di una previsione per un istante specifico (anno,mese,giorno,ora,minuti).</li>
+            <li>Richiesta delle previsioni partendo da un istante fino al giorno successivo (24h succ.).</li>
+            <li>Richiesta di previsioni per un intervallo di tempo scelto (giorno inizio e girono fine, max un mese)</li>
+        </ul>
+    Suggeriamo la lettura del manuale d'uso per capire come utilizzare le opzioni più complicate<br>
+    (o comunque per avere chiarezza sulle loro funzionalità).
+
+    </p>
+    <br><br><br><br><br>
+    <h2>Le Reti neurali</h2>
+    <p>Sono state create una rete neurale per ogni tipo, per ogni sensore (4 tipi X 8 Sensori X 2 (Shuffle Si o No)).<br>
+        Le reti possono essere di 4 tipi (per struttura): LSTM,CNN-LSTM,LSTM-CNN e LSTM-CNN paralleli.<br>
+        Come si può intuire i tipi CNN-LSTM e LSTM-CNN sono modelli nel quale ci sono 2 parti (CNN e LSTM) in successione
+        (una prima poi l'altra e viceversa), mentre nell'ultimo tipo le 2 parti operano in modo parallelo durante l'esecuzione del programma.<br><br>
+
+        Specifiche modelli:<br>
+        epochs:300<br>
+        dropout:0.005<br>
+        time lag: 7<br>
+        batch size: 70<br>
+        validation split: 0.2<br>
+        optimizer: Adam (learning rate= 0.0005)<br>
+        loss: mae<br><br>
+        Se si vuole sapere la struttura dei modelli (layers), si può trovare uno schema a riguardo
+        a destra.
+        <br><br>
+        Se si vuole sapere di più sulla libreria utilizzata, suggeriamo di visitare il sito della libreria
+        <a href="https://keras.io">keras</a>.
+<!--        <img class="schemaLSTMHome" id="schema1" src="{% static 'images/schemaLSTM.png' %}"/>-->
+<!--        <img class="schemaCNNHome" id="schema2" src="{% static 'images/schemaCNN.png' %}"/>-->
+
+    </p>
+</div>
+
+</body>
+</html>

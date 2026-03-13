@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <base target="_top">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mappa Temperatura</title>
+    <!-- External link CSS / JS -->
+    {% load static %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin="" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet-src.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+</head>
+
+<body>
+<div class="navbar">
+    <a class="subnav" href="../home">Home</a>
+    <div class="subnav">
+        <button class="subnavbtn">Previsioni <i class="fa fa-caret-down"></i></button>
+        <div class="subnav-content">
+            <a href="../forecastIstant">Istante di tempo</a>
+            <a href="../forecast">24 Ore</a>
+            <a href="../forecastDays">Intervallo di date</a>
+        </div>
+    </div>
+    <a class="subnav" href="../plot">Grafici</a>
+    <a class="subnav" href="../autori">Autori</a>
+</div>
+
+<div id="map">
+    <img id="loading-overlay" src="../static/images/rickroll.gif" alt="Easter Egg">
+</div>
+<div id="legend"></div>
+<div id="leaflet"></div>
+
+<div class="buttonContainer">
+    <button id="reset">Reset</button>
+    <label id="labelData">Scegli data:</label>
+    <input type="date" id="chooseData" name="date">
+    <label id="labelTime">Scegli orario:</label>
+    <input type="time" id="time" name="time" />
+    <label id="labelModel" for="model">Scegli modello:</label>
+    <select name="model" id="model">
+        <option value="LSTM">LSTM</option>
+        <option value="LSTMCNN">LSTM-CNN</option>
+        <option value="CNNLSTM">CNN-LSTM</option>
+        <option value="CNNLSTMPar">LSTM-CNN PARALLELO</option>
+    </select>
+    <button id="updateMapBtn" >Aggiorna Mappa</button>
+</div>
+
+<div id="temperatureLabels"></div>
+
+<div id="tableDiv">
+    <table id="tableSensors">
+        <tr>
+            <th>Sensore 1</th>
+            <th>Sensore 2</th>
+            <th>Sensore 3</th>
+            <th>Sensore 4</th>
+            <th>Sensore 5</th>
+            <th>Sensore 6</th>
+            <th>Sensore 7</th>
+            <th>Sensore 8</th>
+        </tr>
+        <tr>
+            <td id="sens1"></td>
+            <td id="sens2"></td>
+            <td id="sens3"></td>
+            <td id="sens4"></td>
+            <td id="sens5"></td>
+            <td id="sens6"></td>
+            <td id="sens7"></td>
+            <td id="sens8"></td>
+        </tr>
+    </table>
+</div>
+
+<link rel="stylesheet" href="{% static 'styles.css' %}"/>
+<script src="{% static 'JS/leaflet-heat.js' %}"></script>
+
+<script type="importmap">
+    {
+        "imports": {
+            "constFunction": "{% static 'JS/constFunction.js' %}"
+        }
+    }
+</script>
+<script type="module" src="{% static 'JS/forecastIstant.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <base target="_top">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mappa Temperatura</title>
+    <!-- External link CSS / JS -->
+    {% load static %}
+    <link href="switch-mode.html" rel="import"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin="" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet-src.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+</head>
+
+<body>
+
+<div class="navbar">
+    <a class="subnav" href="../home">Home</a>
+    <div class="subnav">
+        <button class="subnavbtn">Previsioni <i class="fa fa-caret-down"></i></button>
+        <div class="subnav-content">
+            <a href="../forecastIstant">Istante di tempo</a>
+            <a href="../forecast">24 Ore</a>
+            <a href="../forecastDays">Intervallo di date</a>
+        </div>
+    </div>
+    <a class="subnav" href="../plot">Grafici</a>
+    <a class="subnav" href="../autori">Autori</a>
+</div>
+
+<div id="map">
+    <img id="loading-overlay" src="../static/images/rickroll.gif" alt="Easter Egg">
+</div>
+
+<div id="legend"></div>
+<div id="leaflet"></div>
+
+<div class="buttonContainer">
+    <button id="reset">Reset</button>
+
+    <label id="labelData">Scegli data Inizio:</label>
+    <input type="date" id="chooseData" name="date" >
+    <label id="labelDataEnd">Scegli data Fine:</label>
+    <input type="date" id="chooseDataEnd" name="date" >
+
+
+    <label id="labelModel" for="model">Scegli modello:</label>
+    <select name="model" id="model">
+        <option value="LSTM">LSTM</option>
+        <option value="LSTMCNN">LSTM-CNN</option>
+        <option value="CNNLSTM">CNN-LSTM</option>
+        <option value="CNNLSTMPar">LSTM-CNN PARALLELO</option>
+    </select>
+
+    <button id="updateMapBtn" \ >Aggiorna Mappa</button>
+</div>
+<div class="main-container">
+    <!-- Sensibilità -->
+    <label for="sensibility">Sensibilità: </label>
+    <select name="sensibility" id="sensibility" >
+        <option value="5.m">5 min</option>
+        <option value="15.m">15 min</option>
+        <option value="30.m">30 min</option>
+        <option value="1.h">1 ora</option>
+        <option value="3.h">3 ore</option>
+        <option value="6.h">6 ore</option>
+    </select>
+
+    <!-- Tipo di media -->
+    <label for="typeMean">Tipo di media:</label>
+    <input type="checkbox" id="typeMeanCheckBox">
+
+    <div class="tooltip-container" id="typeMeanContainer" style="display: none;">
+        <select name="media" id="typeMean">
+            <option value="fixed">Intervallo fisso</option>
+            <option value="dynamic" id="optionDynamic">Intervallo dinamico</option>
+        </select>
+
+        <!-- Ogni tot media -->
+        <div class="tooltip-container" id="intMeanContainer">
+            <label for="intMean">Ogni tot media:</label>
+            <select name="intMean" id="intMean">
+                <option value="5.m">5 min</option>
+                <option value="15.m">15 min</option>
+                <option value="30.m">30 min</option>
+                <option value="1.h">1 ora</option>
+                <option value="3.h">3 ore</option>
+                <option value="6.h">6 ore</option>
+            </select>
+        </div>
+
+        <!-- Dimensione Intervallo -->
+        <div class="tooltip-container" id="dimSensibilityContainer" style="display: none;">
+            <label for="dimSens">Dim Salto Intervallo:</label>
+            <select name="dimSens" id="dimSens">
+                <option value="5">5 </option>
+                <option value="10">10 </option>
+                <option value="15">15 </option>
+            </select>
+
+            <!-- Icona "i" di info con tooltip -->
+            <div class="info-icon">
+                i
+                <span class="tooltip-text">
+          Questo prende il valore, si sposta n valori a destra e a sinistra di quel valore.<br>
+          esempio: sono a 5 e ho scelto il valeore=4, si sposta a destra e a sinistra di 2
+          ovvero mi prendo i valori da 3 a 7.
+        </span>
+                <!--<img src="../static/images/immagine.png">-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slider Section -->
+<div class="SlideContainer">
+    <input type="range" min="0" max="96" value="0" id="myRange" class="slider">
+
+    <!-- Speed Slider -->
+    <select id="sliderSpeed">
+        <option value = "0.5"> 0.5x </option>
+        <option value = "1" selected> 1x </option>
+        <option value = "1.5"> 1.5x</option>
+        <option value = "2"> 2x </option>
+        <option value = "2.5"> 2.5x </option>
+        <option value = "3"> 3x </option>
+    </select>
+
+    <p>Value: <span id="value"></span></p>
+    <button id="playButton">Play</button>
+
+    <label id="timeIstantDate"></label>
+    <div id="temperatureLabels"></div>
+</div>
+
+<div id="tableDiv">
+    <table id="tableSensors">
+        <tr>
+            <th>Sensore 1</th>
+            <th>Sensore 2</th>
+            <th>Sensore 3</th>
+            <th>Sensore 4</th>
+            <th>Sensore 5</th>
+            <th>Sensore 6</th>
+            <th>Sensore 7</th>
+            <th>Sensore 8</th>
+        </tr>
+        <tr>
+            <td id="sens1"></td>
+            <td id="sens2"></td>
+            <td id="sens3"></td>
+            <td id="sens4"></td>
+            <td id="sens5"></td>
+            <td id="sens6"></td>
+            <td id="sens7"></td>
+            <td id="sens8"></td>
+        </tr>
+    </table>
+</div>
+
+<!-- Local file CSS / JS -->
+<link rel="stylesheet" href="{% static 'styles.css' %}" />
+<script src="{% static 'JS/leaflet-heat.js' %}"></script>
+<script type="importmap">
+    {
+        "imports": {
+            "constFunction": "{% static 'JS/constFunction.js' %}"
+        }
+    }
+</script>
+<script type="module" src="{% static 'JS/forecastDays.js' %}"></script>
+
+</body>
+</html>
