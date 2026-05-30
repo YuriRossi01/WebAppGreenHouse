@@ -1,0 +1,47 @@
+Ultimi valori per ogni key:
+-loss: 0.3401084840297699
+-mape: 1.5895737409591675
+-mae: 0.3401084840297699
+-mse: 0.29792970418930054
+-val_loss: 0.9377453327178955
+-val_mape: 6.508508682250977
+-val_mae: 0.9377453327178955
+-val_mse: 1.9601445198059082
+
+Valori rispetto dataset di test:
+ -mae: 4.3189387
+-mape: 0.8663468
+numero epochs: 300
+time lag: 7
+batch size: 70
+validation split: 0.2
+Dropout rate: 0.005
+Summary:
+Model: "sequential_6"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ bidirectional_30 (Bidirect  (None, 7, 624)            878592    
+ ional)                                                          
+                                                                 
+ bidirectional_31 (Bidirect  (None, 7, 468)            1608048   
+ ional)                                                          
+                                                                 
+ bidirectional_32 (Bidirect  (None, 7, 624)            1949376   
+ ional)                                                          
+                                                                 
+ bidirectional_33 (Bidirect  (None, 7, 312)            974688    
+ ional)                                                          
+                                                                 
+ bidirectional_34 (Bidirect  (None, 7, 624)            1560000   
+ ional)                                                          
+                                                                 
+ flatten_6 (Flatten)         (None, 4368)              0         
+                                                                 
+ dense_6 (Dense)             (None, 1)                 4369      
+                                                                 
+=================================================================
+Total params: 6975073 (26.61 MB)
+Trainable params: 6975073 (26.61 MB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________

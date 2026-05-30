@@ -80,7 +80,12 @@ def getTemperaturaMonthMedia(precisioneSalto,puntiMedia,dataInizio,dataFine,mode
         if not(my_file.is_file()):
             raise ValueError("nome file non valido")
 
-        my_model = keras.saving.load_model(my_file)
+        #my_model = keras.saving.load_model(my_file)
+        try:
+            my_model = tf.keras.models.load_model(my_file, compile=False)
+        except Exception as e:
+            # Se fallisce, proviamo il metodo standard
+            my_model = keras.models.load_model(my_file, compile=False)
         result = my_model.predict(arrayRighe, batch_size=batch_size)
 
         medie=[]
@@ -139,7 +144,13 @@ def getTemperaturaMonthDay(misuraSalto,dataInizio,dataFine,modelType,local=False
         if not(my_file.is_file()):
             raise ValueError("nome file non valido")
 
-        my_model = keras.saving.load_model(my_file)
+        #my_model = keras.saving.load_model(my_file)
+        try:
+            my_model = tf.keras.models.load_model(my_file, compile=False)
+        except Exception as e:
+            # Se fallisce, proviamo il metodo standard
+            my_model = keras.models.load_model(my_file, compile=False)
+
         result = my_model.predict(arrayRighe, batch_size=batch_size)
         allResults.append(result)
     allResults=np.asarray(allResults)
@@ -201,7 +212,14 @@ def getTemperaturaMediaOgniTotIntervallo(precisioneSalto,puntiMedia,data,tempo,m
         if not(my_file.is_file()):
             raise ValueError("nome file non valido")
 
-        my_model = keras.saving.load_model(my_file)
+        #my_model = keras.saving.load_model(my_file)
+        try:
+            my_model = tf.keras.models.load_model(my_file, compile=False)
+        except Exception as e:
+            # Se fallisce, proviamo il metodo standard
+            my_model = keras.models.load_model(my_file, compile=False)
+
+
         result = my_model.predict(arrayRighe, batch_size=batch_size)
 
         medie=[]
@@ -261,7 +279,14 @@ def getTemperaturaDay(misuraSalto,data,tempo,modelType,local=False):
         my_file = Path(filename)
         if not(my_file.is_file()):
             raise ValueError("nome file non valido")
-        my_model = keras.saving.load_model(my_file)
+        #my_model = keras.saving.load_model(my_file)
+        try:
+            my_model = tf.keras.models.load_model(my_file, compile=False)
+        except Exception as e:
+            # Se fallisce, proviamo il metodo standard
+            my_model = keras.models.load_model(my_file, compile=False)
+
+
         result = my_model.predict(arrayRighe, batch_size=batch_size)
         allResults.append(result)
     allResults = numpy.asarray(allResults)
@@ -308,7 +333,13 @@ def  reqTemp(data,tempo,modelType,extra=False):
         if not(my_file.is_file()):
             raise ValueError("nome file non valido")
 
-        my_model = keras.saving.load_model(my_file)
+        #my_model = keras.saving.load_model(my_file)
+        try:
+            my_model = tf.keras.models.load_model(my_file, compile=False)
+        except Exception as e:
+            # Se fallisce, proviamo il metodo standard
+            my_model = keras.models.load_model(my_file, compile=False)
+
         result = my_model.predict(arrayRighe, batch_size=batch_size)
 
 

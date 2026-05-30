@@ -1,0 +1,58 @@
+Ultimi valori per ogni key:
+-loss: 0.32815107703208923
+-mape: 1.595594882965088
+-mae: 0.32815107703208923
+-mse: 0.2328740954399109
+-val_loss: 0.6404172778129578
+-val_mape: 4.360002517700195
+-val_mae: 0.6404172778129578
+-val_mse: 0.6703884601593018
+
+Valori rispetto dataset di test:
+ -mae: 4.5768456
+-mape: 2.9976575
+numero epochs: 300
+time lag: 7
+batch size: 70
+validation split: 0.2
+Dropout rate: 0.005
+Summary:
+Model: "sequential_9"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ bidirectional_45 (Bidirect  (None, 7, 624)            878592    
+ ional)                                                          
+                                                                 
+ bidirectional_46 (Bidirect  (None, 7, 468)            1608048   
+ ional)                                                          
+                                                                 
+ bidirectional_47 (Bidirect  (None, 7, 624)            1949376   
+ ional)                                                          
+                                                                 
+ bidirectional_48 (Bidirect  (None, 7, 312)            974688    
+ ional)                                                          
+                                                                 
+ bidirectional_49 (Bidirect  (None, 7, 624)            1560000   
+ ional)                                                          
+                                                                 
+ conv1d_18 (Conv1D)          (None, 5, 64)             119872    
+                                                                 
+ dense_27 (Dense)            (None, 5, 64)             4160      
+                                                                 
+ max_pooling1d_9 (MaxPoolin  (None, 2, 64)             0         
+ g1D)                                                            
+                                                                 
+ conv1d_19 (Conv1D)          (None, 1, 128)            16512     
+                                                                 
+ flatten_9 (Flatten)         (None, 128)               0         
+                                                                 
+ dense_28 (Dense)            (None, 32)                4128      
+                                                                 
+ dense_29 (Dense)            (None, 1)                 33        
+                                                                 
+=================================================================
+Total params: 7115409 (27.14 MB)
+Trainable params: 7115409 (27.14 MB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________

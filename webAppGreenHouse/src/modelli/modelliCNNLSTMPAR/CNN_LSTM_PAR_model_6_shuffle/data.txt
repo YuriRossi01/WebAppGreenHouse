@@ -1,0 +1,67 @@
+Ultimi valori per ogni key:
+-loss: 0.39038893580436707
+-mape: 1.7911601066589355
+-mae: 0.39038893580436707
+-mse: 0.3961736857891083
+-val_loss: 0.888361394405365
+-val_mape: 5.375631809234619
+-val_mae: 0.888361394405365
+-val_mse: 1.9620527029037476
+
+Valori rispetto dataset di test:
+ -mae: 3.1201835
+-mape: 1.3264629
+numero epochs: 300
+time lag: 7
+batch size: 70
+validation split: 0.2
+Dropout rate: 0.005
+Summary:
+Model: "ParallelModel"
+__________________________________________________________________________________________________
+ Layer (type)                Output Shape                 Param #   Connected to                  
+==================================================================================================
+ input_6 (InputLayer)        [(None, 7, 39)]              0         []                            
+                                                                                                  
+ conv1d_10 (Conv1D)          (None, 5, 64)                7552      ['input_6[0][0]']             
+                                                                                                  
+ bidirectional_25 (Bidirect  (None, 7, 624)               878592    ['input_6[0][0]']             
+ ional)                                                                                           
+                                                                                                  
+ dense_20 (Dense)            (None, 5, 64)                4160      ['conv1d_10[0][0]']           
+                                                                                                  
+ bidirectional_26 (Bidirect  (None, 7, 468)               1608048   ['bidirectional_25[0][0]']    
+ ional)                                                                                           
+                                                                                                  
+ max_pooling1d_5 (MaxPoolin  (None, 2, 64)                0         ['dense_20[0][0]']            
+ g1D)                                                                                             
+                                                                                                  
+ bidirectional_27 (Bidirect  (None, 7, 624)               1949376   ['bidirectional_26[0][0]']    
+ ional)                                                                                           
+                                                                                                  
+ conv1d_11 (Conv1D)          (None, 1, 128)               16512     ['max_pooling1d_5[0][0]']     
+                                                                                                  
+ bidirectional_28 (Bidirect  (None, 7, 312)               974688    ['bidirectional_27[0][0]']    
+ ional)                                                                                           
+                                                                                                  
+ flatten_10 (Flatten)        (None, 128)                  0         ['conv1d_11[0][0]']           
+                                                                                                  
+ bidirectional_29 (Bidirect  (None, 7, 624)               1560000   ['bidirectional_28[0][0]']    
+ ional)                                                                                           
+                                                                                                  
+ dense_21 (Dense)            (None, 32)                   4128      ['flatten_10[0][0]']          
+                                                                                                  
+ flatten_11 (Flatten)        (None, 4368)                 0         ['bidirectional_29[0][0]']    
+                                                                                                  
+ dense_22 (Dense)            (None, 1)                    33        ['dense_21[0][0]']            
+                                                                                                  
+ dense_23 (Dense)            (None, 1)                    4369      ['flatten_11[0][0]']          
+                                                                                                  
+ average_5 (Average)         (None, 1)                    0         ['dense_22[0][0]',            
+                                                                     'dense_23[0][0]']            
+                                                                                                  
+==================================================================================================
+Total params: 7007458 (26.73 MB)
+Trainable params: 7007458 (26.73 MB)
+Non-trainable params: 0 (0.00 Byte)
+__________________________________________________________________________________________________

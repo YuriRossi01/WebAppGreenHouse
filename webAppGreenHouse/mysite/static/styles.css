@@ -326,6 +326,7 @@ p{
   border: none;
   border-radius: 50%;
   opacity: 0.7;
+  pointer-events: none;
   transition: opacity 0.3s;
 }
 
