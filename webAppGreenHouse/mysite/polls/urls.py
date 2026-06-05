@@ -12,6 +12,7 @@ urlpatterns = [
     path("forecast/",views.forecast),
     path("forecastIstant/", views.forecastIstant),
     path("forecastDays/", views.forecastDays),
+    path("darkMode/", views.darkMode),
 
     #richieste
     path("test/",views.test),

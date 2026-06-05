@@ -12,10 +12,13 @@
     {% load static %}
 
     <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <link href="darkMode.html" rel="import"/>
+    <script src="{% static 'JS/switchMode.js' %}" defer></script>
 </head>
 
 <body>
-<!--    <h1> Progetto di Tirocinio A.A 2023/2024 <span> Fatto da Leonardo Conti e Rossi Yuri </span><span>diretto da Sara Migliolini</span></h1>-->
+{% include "darkMode.html" %}
+
 <div class="navbar">
 
     <a class="subnav" href="../home">Home</a>

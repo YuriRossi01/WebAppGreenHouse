@@ -104,17 +104,21 @@ const valueSlider = document.getElementById("value"); // id value of slider
 var changeValue = slider.addEventListener("input", changeSlider);
 
 function setupSliderRange(dataInizio, dataFine) {
+
     let inizio = new Date(dataInizio);
     let fine = new Date(dataFine);
 
     // Calcola la differenza in millisecondi e converti in giorni
     let diffInTime = fine.getTime() - inizio.getTime();
     let diffInDays = Math.round(diffInTime / (1000 * 3600 * 24));
+
     if(slider){
         slider.value = 0;
         slider.min = 0;
-        slider.max = 5; // Lo slider avrà step da 1 giorno
+        slider.max = diffInDays; // Lo slider avrà step da 1 giorno
+        slider.setAttribute("data-max", diffInDays);
     }
+
 
 }
 function changeSlider() {
@@ -214,10 +218,9 @@ function chooseData() {
     if (checkBox.checked) {
       if (typeOfRange == "fixed")
         dimJump = Math.floor((intMeanValue / sensibilityValue) / 2);
-      console.log("type " +typeof dimJump);
       url = "http://localhost:8000/reqTempMonthDayMedia/?precisioneSalto=" + sensibility + "&ogniTotMedia=" + strMean + "&dataInizio=" + encodeURIComponent(dateInput) + "&dataFine=" + encodeURIComponent(dateInputEnd) + "&model=" + chooseBox + "&dimIntervallo=" + dimJump;
     }
-    console.log(url);
+
     xhr.open('GET', url);
     xhr.responseType = "json";
     xhr.onload = function () {
@@ -313,7 +316,7 @@ function dimRange() {
     // Clear existing options
     dimIntervallo.innerHTML = '';
     let step = intMeanValue / sensibilityValue;
-    //console.log(step);
+
     for (let i = 0; i <= step; i++) {
       // Corrected the syntax here
       let option = document.createElement("option");

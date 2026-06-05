@@ -9,6 +9,7 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 
 from django.template import loader
+from fontTools.misc.cython import returns
 from httpx import Response
 
 from .applications import gestoreRichieste
@@ -26,7 +27,6 @@ def plot(request):
     return  render(request,"plot.html");
 
 def autori(request):
-
     return  render(request,"autori.html")
 def forecast(request):
     return  render(request,"forecast.html")
@@ -36,6 +36,9 @@ def forecastIstant(request):
 
 def forecastDays(request):
     return render(request,"forecastDays.html")
+
+def darkMode(request):
+    return render(request,"darkMode.html")
 
 def test(request):
     # create data dictionary

@@ -1,605 +1,631 @@
+/* ==========================================================================
+   DESIGN TOKENS & ARCHITETTURA SEMANTICA (Standard UI/UX Internazionali)
+   ========================================================================== */
+
 :root {
-  --base-color: white;
-  --base-variant: #e8e9ed;
-  --text-color: black;
-  --primary-color: #3a435d;
-  --secondaary-color: #232738;
+  /* --- Tavolozza Colori: Modalità Chiara (WCAG AA Compliant) --- */
+  --bg-primary: #ffffff;      /* Sfondo Principale */
+  --bg-secondary: #f8fafc;    /* Sfondo Navbar menù a tendina */
+  --bg-panel: #1e293b;        /* Sfondo scuro per Navbar e interfacce controllo */
+  --text-primary: #0f172a;    /* Testo titolo (h1), intestazione (h2), elenco puntato */
+  --text-muted: #475569;      /* Testo normale, paragrafi */
+  --text-on-panel: #ffffff;   /* Testo Navbar */
+
+  --brand-primary: #dc2626;   /* Menu' a tendina Navbar, passaggio mouse (60-30-10 Rule) */
+  --brand-secondary: #3b82f6; /* Testo NavBar passaggio mouse, tooltips ed elementi interattivi */
+  --border-color: #e2e8f0;    /* Bordi (Navbar, light/dark toggle ecc ) */
+  --table-stripe: #f1f5f9;
+
+  /* --- Icone Native Switch --- */
+  --switch-bg: #0f172a;       /* Fondo Light Mode */
+
+  /* --- Tipografia & Gerarchia Visiva --- */
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --line-height-base: 1.5; /* L'altezza riga per corpo del testo (paragrafi, testo principale, elenchi, ecc) */
+  --line-height-heading: 1.2; /* L'altezza riga per titoli */
+
+  /* --- Sistema Spaziatura ad 8 punti (8pt Grid System) --- */
+  --space-xs: 4px; /* Per icone/elementi compatti da testo */
+  --space-sm: 8px; /* Per padding interno (bottoni piccoli o card strette) */
+  --space-md: 16px; /* Standard per paragrafi o elementi principali */
+  --space-lg: 24px; /* Per sezioni o componendi macro */
+  --space-xl: 32px; /* Per margini esterni */
+
+  /* --- Arrotondamenti ed Elevazione (Micro-interazioni) --- */
+  --radius-sm: 6px; /* Arrontandamento per piccoli elementi (checkbox,badge, ecc) */
+  --radius-md: 12px; /* "" standard (bottoni, input di testo, card medie, ecc)  */
+  --radius-lg: 16px; /* "" per grandi contenitori principali */
+  --radius-full: 9999px; /* "" per trasformazio elementi in cerchio */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* Ombreggiatura per bottoni */
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); /* Ombreggiatura standard per menu a tendina o card  */
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);/* Ombreggiatura per finestre, popover in piano */
+
+  /* --- Transizioni Fluidi (Bézier Curve Standard) --- */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Transizioni fluide comuni */
 }
-/*--------------------Area Dark Mode--------------------*/
-.darkmode {
-  --base-color: black;
-  --base-variant: #101425;
-  --text-color: white;
-  --primary-color: #3a435d;
-  --secondary-color: #a4a5b8;
+
+/* --- Tavolozza Colori: Modalità Scura (Premium Dark Mode Architecture) --- */
+body.darkmode {
+  --bg-primary: #0f172a;      /* Sfondo Principale */
+  --bg-secondary: #1e293b;    /* Sfondo Navbar menù a tendina */
+  --bg-panel: #0f172a;        /* Sfondo scuro per Navbar e interfacce controllo */
+  --text-primary: #f8fafc;    /* Testo titolo (h1), intestazione (h2), elenco puntato */
+  --text-muted: #94a3b8;      /* Testo normale, paragrafi */
+  --text-on-panel: #f8fafc;   /* Testo Navbar */
+
+  --brand-primary: #ef4444;   /* Menu' a tendina Navbar, passaggio mouse (60-30-10 Rule) */
+  --brand-secondary: #60a5fa; /* Testo NavBar passaggio mouse, tooltips ed elementi interattivi */
+  --border-color: #334155;    /* Bordi (Navbar, light/dark toggle ecc ) */
+  --table-stripe: #1e293b;
+
+  /* --- Icone Native Switch --- */
+  --switch-bg: #0f172a;       /* Sfondo Dark Mode */
 }
-/* Tema Switch */
-#theme-switch {
-  height: 50px;
-  width: 50px;
+
+/* ==========================================================================
+   STILI DI BASE & RESET DELL'USER AGENT
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
   padding: 0;
-  border-radius: 50%;
-  background-color: var(--base-variant);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: var(--line-height-base);
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: var(--transition-smooth);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   COMPONENTE: INTERRUTTORE DI TEMA (Theme Switcher)
+   ========================================================================== */
+
+#theme-switch {
+  height: 44px;
+  width: 44px;
+  border-radius: var(--radius-full);
+  background-color: var(--switch-bg);
+  box-shadow: var(--shadow-md);
   display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  z-index: 10000; /* Isola il componente sopra le mappe Leaflet */
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  transition: var(--transition-smooth);
 }
 
-/* Nascondi una delle due immagini */
+#theme-switch:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-lg);
+}
+
 .theme-icon {
-  height: 24px;
-  width: 24px;
-  display: none;
+  height: 22px;
+  width: 22px;
+  object-fit: contain;
+  transition: var(--transition-smooth);
 }
 
-.theme-icon.moon-icon {
-  display: block; /* Mostra la luna di default */
-}
+/* --- Logica di visualizzazione basata sullo stato delle icone fornite --- */
+.theme-icon.moon-icon { display: block; }
+.theme-icon.sun-icon { display: none; }
 
-.darkmode .theme-icon.moon-icon {
-  display: none; /* Nascondi la luna in modalità scura */
-}
+body.darkmode .theme-icon.moon-icon { display: none; }
+body.darkmode .theme-icon.sun-icon { display: block; }
 
-.darkmode .theme-icon.sun-icon {
-  display: block; /* Mostra il sole in modalità scura */
-}
+/* ==========================================================================
+   AREA MENU: NAVBAR & SUB-NAVIGATION MODULARE
+   ========================================================================== */
 
-
-/*--------------------Area Site--------------------*/
-body {
-font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-  width: 100%;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-
-/*--------------------Area Menu--------------------*/
 .navbar {
-  overflow: visible; /* Cambiato da hidden per permettere ai sottomenu di uscire */
-  background-color: black; !important;
+  overflow: visible;
+  background-color: var(--bg-panel);
   width: 100%;
-  position: relative; /* Necessario per attivare lo z-index */
+  position: relative;
   z-index: 2000;
-  display: flow-root; /* Questo sostituisce l'overflow:hidden per contenere i float senza tagliare i sottomenu */
-  min-height: 50px;
+  display: flow-root;
+  min-height: 56px;
+  box-shadow: var(--shadow-sm);
+  border-bottom: 1px solid var(--border-color);
+  transition: var(--transition-smooth);
 }
 
 .navbar a {
   float: left;
-  font-size: 20px;
-  color: white; !important;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-on-panel);
   text-align: center;
-  padding: 14px 16px;
+  padding: var(--space-md) var(--space-lg);
   text-decoration: none;
+  transition: var(--transition-smooth);
 }
 
 .subnav {
   float: left;
   overflow: hidden;
-  width: 400px;
-  text-align:center;
+  width: 240px; /* Ridotto per una proporzione UX ottimale */
+  text-align: center;
 }
 
 .subnav .subnavbtn {
-  font-size: 20px;
+  font-size: 16px;
+  font-weight: 500;
   border: none;
   outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
+  color: var(--text-on-panel);
+  padding: var(--space-md) var(--space-lg);
+  background-color: transparent;
   font-family: inherit;
   margin: 0;
-  width:100%;
+  width: 100%;
+  cursor: pointer;
+  transition: var(--transition-smooth);
 }
 
-.navbar a:hover, .subnav:hover .subnavbtn {
-  background-color: #737373;
+.navbar a:hover,
+.subnav:hover .subnavbtn {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--brand-secondary);
 }
 
 .subnav-content {
   display: none;
   position: absolute;
   left: 0;
-  background-color:  #737373; !important;
+  background-color: var(--bg-secondary);
   width: 100%;
-  z-index:2001;
+  z-index: 2001;
+  box-shadow: var(--shadow-md);
+  border-bottom: 1px solid var(--border-color);
+  padding: var(--space-xs) 0;
 }
 
 .subnav-content a {
   float: left;
-  color: white;
+  color: var(--text-primary);
   text-decoration: none;
-  width: 150px;
+  width: 200px;
+  text-align: left;
+  padding: var(--space-sm) var(--space-lg);
 }
 
 .subnav-content a:hover {
-  background-color:  #737373;
-  color: black;
+  background-color: var(--table-stripe);
+  color: var(--brand-primary);
 }
 
 .subnav:hover .subnav-content {
   display: block;
 }
 
+/* ==========================================================================
+   LAYOUT DELLE SEZIONI & ELEMENTI TIPOGRAFICI
+   ========================================================================== */
+
+h1, h2, h3 {
+  color: var(--text-primary);
+  font-weight: 700;
+  line-height: var(--line-height-heading);
+}
+
+h1 { font-size: 2.25rem; margin: var(--space-xl) 0; text-align: center; }
+h2 { font-size: 1.75rem; margin-bottom: var(--space-md); }
+h3 { font-size: 1.25rem; margin-bottom: var(--space-sm); }
+
+p {
+  color: var(--text-muted);
+  margin-top: var(--space-md);
+}
+
 div.areaTitolo {
-  width:100%;
-  height:80px;
+    width: 100%;
+    height: 80px;
 }
 
-/*--------------------Area Title--------------------*/
-div.areaTitolo  h1 {
-  font-size: 40px;
+div.areaTitolo h1 {
+  font-size: 32px;
   width: 600px;
-  height:60px;
-  left:40px;
-  top:100px;
-  position:absolute;
-  float:left
+  height: 60px;
+  left: 40px;
+  top: 100px;
+  position: absolute;
 }
 
-div.areaTitolo  select {
-  width: 100px;
-  height:20px;
-  top:150px;
-  left: 790px;
-  position:absolute;
-  float:left
+div.areaTitolo select,
+div.areaTitolo label {
+  position: absolute;
+  top: 130px;
 }
 
-div.areaTitolo  label{
-  top:150px;
-  width: 150px;
-  height:20px;
-  left:640px;
-  position:absolute;
-  float:left
-}
+div.areaTitolo label { left: 640px; width: 150px; color: var(--text-muted); }
+div.areaTitolo select { left: 790px; width: 120px; padding: var(--space-xs); border-radius: var(--radius-sm); }
 
-#titoloHome {
-  left: 200px;
-  top:100px;
-}
+#titoloHome { left: 200px; top: 100px; }
 
-/*--------------------Area Home--------------------*/
-div.areaTesto{
-  top:200px;
+div.areaTesto {
+  top: 200px;
   width: 1500px;
   height: 1000px;
-  position:absolute;
-  left:40px;
-}
-
-div.areaTesto h2{
-  width:500px;
-}
-
-div.areaTesto p{
-  width:700px;
-}
-
-#immagine1home{
-  flex: 1;
-  max-width: 100%;
-  height: auto;
-}
-
-#immagine1Label{
-  left:1000px;
-  top:0px;
-  position:absolute;
-}
-
-/*--------------------Area Graphic--------------------*/
-div.areaGrafici {
-  width:100%;
-  height:800px;
-  top:150px;
-  position:absolute;
-}
-
-h3.graficoLSTM {
-  top:50px;
-  position:absolute;
-  left:100px;
-}
-
-img.graficoLSTM{
-  top:100px;
-  position:absolute;
-  left:20px;
-}
-img.schemaLSTMHome{
-  top:00px;
-  position:absolute;
-  left:1000px;
-}
-
-h3.graficoLSTMCNN {
-  top:50px;
-  position:absolute;
-  left:800px;
-}
-
-img.graficoLSTMCNN{
-  top:100px;
-  position:absolute;
-  left:720px;
-}
-
-h3.graficoCNNLSTM {
-  top:550px;
-  position:absolute;
-  left:100px;
-}
-
-img.graficoCNNLSTM{
-  top:600px;
-  position:absolute;
-  left:20px;
-}
-
-h3.graficoLSTMCNNPar {
-  top:550px;
-  position:absolute;
-  left:800px;
-}
-
-img.graficoLSTMCNNPar{
-  top:600px;
-  position:absolute;
-  left:720px;
-}
-img.schemaCNNHome{
-  top:440px;
-  position:absolute;
-  left:1040px;
-}
-
-
-/*--------------------General HTML--------------------*/
-h1 {
-  margin: 20px 0;
-  text-align: center;
-}
-
-p{
-  margin-top: 30px;
-  opacity: 0.7;
-}
-
-/*--------------------Area Map / Legend Map / Loading SVG --------------------*/
-#map {
-  position: relative;
-  width: 1500px;
-  height: 500px;
-  z-index :1;
-}
-
-#legend{
   position: absolute;
-  bottom: -30px;
-  left: 1px;
-  width: 125px;
-  height: 180px;
-  z-index: 1000;
-  margin-bottom: 30px;
-  margin-right: 10px;
-  /*background:white;*/
-  border-radius: 5px;
-  line-height: 24px;
-  padding: 6px 8px;
+  left: 40px;
 }
 
-.legend i {
-  width: 18px;
-  height: 18px;
-  float: left;
-  margin: 0 8px 0 0;
-  opacity: 0.7;
+div.areaGrafici { width:100%; height:800px; top:150px; position:absolute; }
+
+h3.graficoLSTM { top:50px; position:absolute; left:100px; }
+img.graficoLSTM { top:80px; position:absolute; left:20px; }
+
+img.schemaLSTMHome { top:0px; position:absolute; left:1000px; }
+
+h3.graficoLSTMCNN { top:50px; position:absolute; left:800px; }
+img.graficoLSTMCNN { top:80px; position:absolute; left:720px; }
+
+h3.graficoCNNLSTM { top:570px; position:absolute; left:100px; }
+img.graficoCNNLSTM { top:600px; position:absolute; left:20px; }
+
+h3.graficoLSTMCNNPar { top:570px; position:absolute; left:800px; }
+img.graficoLSTMCNNPar { top:600px; position:absolute; left:720px; }
+
+img.schemaCNNHome { top:440px; position:absolute; left:1040px; }
+
+#immagine1Label { left: 1000px; top: 0; position: absolute; }
+#immagine1home { max-width: 100%; height: auto; border-radius: var(--radius-md); box-shadow: var(--shadow-md); }
+
+
+
+
+
+
+/*
+#reset { position: absolute; bottom: 420px; left: 1630px; }
+#labelData { position: absolute; bottom: 370px; left: 1530px; }
+#chooseData { position: absolute; bottom: 340px; left: 1530px; }
+#labelDataEnd { position: absolute; bottom: 370px; left: 1700px; }
+#chooseDataEnd { position: absolute; bottom: 340px; left: 1700px; }
+#labelTime { position: absolute; bottom: 260px; left: 1530px; }
+#time { position: absolute; bottom: 230px; left: 1630px; }
+#labelModel { position: absolute; bottom: 150px; left: 1530px; }
+#model { position: absolute; bottom: 120px; left: 1630px; }
+#updateMapBtn { position: absolute; bottom:40px; left: 1630px; }*/
+
+
+
+/* ==========================================================================
+   STRUTTURA MACRO-LAYOUT (FLEXBOX ARCHITECTURE)
+   ========================================================================== */
+
+/* Layout Superiore: Mappa a Sinistra, Controlli a Destra */
+.dashboard-top-section {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-lg);
+  max-width: 1750px;
+  margin: var(--space-lg) auto;
+  padding: 0 var(--space-md);
+  align-items: stretch; /* Estende entrambi i blocchi alla stessa altezza visiva */
+}
+
+/* Layout Inferiore: Contenitori incolonnati fluidamente sotto la mappa */
+.dashboard-bottom-section {
+  max-width: 1750px;
+  margin: 0 auto var(--space-xl) auto;
+  padding: 0 var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+
+/* ==========================================================================
+   GEOSPATIAL AREA (MAPPA, LEGGENDA E GIF)
+   ========================================================================== */
+
+.map-container {
+  flex: 1; /* Prende tutto lo spazio disponibile a sinistra */
+  position: relative;
+  min-height: 520px;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  z-index: 1;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+}
+/*
+.leaflet-bottom.leaflet-left .legend,
+.legend {
+  padding: var(--space-sm) var(--space-md);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  background: var(--bg-secondary) !important; /* Forza il background del Design Token */
+  color: var(--text-primary) !important;
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  line-height: 1.4;
+  max-width: 200px;
+  z-index: 1000;
+  margin-bottom: var(--space-md) !important;
+  margin-left: var(--space-md) !important;
 }
 
 .legend h4 {
   text-align: center;
-  font-size: 16px;
-  margin: 2px 12px 8px;
-  color: #777;
+  font-size: 12px;
+  margin-bottom: var(--space-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
 }
-
+*/
 #loading-overlay {
-  display: none; /* attivato dal JS */
-  position: fixed;
-  z-index: 9999;
-
-  /* in basso a destra */
-  bottom: 20px;
-  right: 20px;
-
-  /* Dimensioni da Easter Egg (piccolo) */
-  width: 80px;
-  height: 80px;
-
-  /* Estetica: lo rende più discreto */
-  border: none;
-  border-radius: 50%;
-  opacity: 0.7;
-  pointer-events: none;
-  transition: opacity 0.3s;
-}
-
-#loading-overlay:hover {
-  opacity: 1;
-}
-
-/*--------------------Area Button / ChooseBox / Label -------------------- */
-.buttonContainer {
-  position: relative; /* Il contenitore è il riferimento per la posizione del bottone */
-}
-
-/*-----Button Reset-----*/
-#reset {
+  display: none;
   position: absolute;
-  bottom: 420px;
-  left: 1630px;
-  text-align: center;
+  z-index: 999;
+  bottom: var(--space-md);
+  right: var(--space-md);
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
 }
 
-/*-----Choose Date / Label-----*/
-#labelData{
-  position: absolute;
-  bottom: 370px;
-  left: 1530px;
-  text-align: center;
-}
+/* ==========================================================================
+   SIDEBAR CONTROLS (PANNELLO LATERALE DESTRO)
+   ========================================================================== */
 
-#chooseData{
-  position: absolute;
-  bottom: 340px;
-  left: 1530px;
-  text-align: center;
-}
-#labelDataEnd{
-  position: absolute;
-  bottom: 370px;
-  left: 1700px;
-  text-align: center;
-}
-
-#chooseDataEnd{
-  position: absolute;
-  bottom: 340px;
-  left: 1700px;
-  text-align: center;
-}
-
-/*-----Choose Time / Label-----*/
-#labelTime{
-  position: absolute;
-  bottom: 260px;
-  left: 1530px;
-  text-align: center;
-}
-
-#time{
-  position: absolute;
-  bottom: 230px;
-  left: 1630px;
-}
-
-/*-----Choose Model / Label-----*/
-#labelModel{
-  position: absolute;
-  bottom: 150px;
-  left: 1530px;
-  text-align: center;
-}
-#model{
-  position: absolute;
-  bottom: 120px;
-  left: 1630px;
-  text-align: center;
-}
-#updateMapBtn{
-  position: absolute;
-  bottom:40px;
-  left: 1630px;
-}
-
-/*--------------------Area Slider--------------------*/
-.SlideContainer{
-  position: absolute;
-  width: 370px;
-  left: 500px;
-  bottom: 25%;
-}
-.slider{
-  --webkit-appearance: nome;
-  width: 350px;
-  height: 10px;
-  background: linear-gradient(90deg, rbg(117,252,117) 60%, rgb(214,214,214) 60%);
-  outline:none;
-  opacity: 0.7;
-  -webkit-transition: 0.2s;
-  transition: opacity 0.2s;
-  border-radius:12px;
-  box-shadow: 1px 1px 10px 1px black;
-}
-
-#sliderSpeed{
-  position: relative;
-  bottom: 17px;
-  left: 360px;
-}
-
-.slider::after{
-  content: attr(data-max);
-  color: black;
-  font-size: 1rem ;
-  position: absolute;
-  right: 0px;
-  bottom: 70px;
-}
-
-.slider::before{
-  position: absolute;
-  content: '0';
-  color: black;
-  font-size: 1rem ;
-  left: 0px;
-  bottom: 70px;
-}
-
-#playButton{
-    position: relative;
-    bottom: 35px;
-    left: 90px;
-}
-#timeIstantDate{
-    position: relative;
-    bottom: 35px;
-    left: 110px;
-}
-.leaflet-heatmap-layer {
-  opacity: 0.8;
-}
-
-/*--------------------Area Mean--------------------*/
-/* Contenitore principale per racchiudere tutto */
-.main-container {
-  display: flex;
-  align-items: flex-start;
-  margin-left: 50px;
-  gap: 2px;
-}
-
-/* Stile Flexbox per allineare tutto in fila */
-.flex-container {
+.sidebar-controls {
+  width: 320px; /* Larghezza perfetta standard per i pannelli strumenti UX */
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-lg);
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  align-items: flex-start;
 }
 
-/* Stile per il contenitore orizzontale dei controlli */
-.controls-container {
+.buttonContainer {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: var(--space-md);
+  height: 100%;
+  justify-content: space-between;
 }
 
-/* Tooltip-container in fila */
-.tooltip-container {
+.control-group {
   display: flex;
-  align-items: center;
-  gap: 5px;
+  flex-direction: column;
+  gap: var(--space-xs);
 }
 
-/* Stile per l'icona informativa "i" */
+.control-group label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sidebar-controls input,
+.sidebar-controls select {
+  width: 100%;
+  padding: var(--space-sm);
+  font-size: 14px;
+}
+
+/* Uniformazione e Gerarchia Pulsanti */
+#reset {
+  background-color: transparent;
+  color: var(--brand-primary);
+  border: 2px solid var(--brand-primary);
+  padding: var(--space-sm);
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+#reset:hover {
+  background-color: var(--brand-primary);
+  color: #ffffff;
+}
+
+#updateMapBtn {
+  background-color: var(--brand-secondary);
+  color: #ffffff;
+  border: none;
+  padding: var(--space-md);
+  font-weight: 700;
+  font-size: 15px;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  margin-top: auto; /* Spinge il pulsante di attivazione sempre sul fondo del pannello */
+  transition: var(--transition-smooth);
+}
+
+#updateMapBtn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+
+
 .info-icon {
-  display: inline-block;
-  background-color: #007bff;
-  color: white;
-  border-radius: 50%;
+  display: inline-flex;
+  background-color: var(--brand-secondary);
+  color: #ffffff;
+  border-radius: var(--radius-full);
   width: 20px;
   height: 20px;
-  text-align: center;
-  line-height: 20px;
-  font-size: 14px;
-  font-weight: bold;
-  margin-left: 10px;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
   cursor: pointer;
   position: relative;
 }
 
-/* Tooltip aggiornato */
 .tooltip-text {
   visibility: hidden;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 5px;
-  padding: 10px;
+  background-color: var(--bg-panel);
+  color: var(--text-on-panel);
+  text-align: left;
+  line-height: 1.4;
+  font-weight: 400;
+  font-size: 13px;
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
   position: absolute;
-  top: 30px; /* Distanza dal bottone "i" */
+  bottom: 30px; /* Mostrato sopra l'icona per non sovrapporsi ai selettori */
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1;
+  width: 280px;
+  z-index: 2010;
   opacity: 0;
-  transition: opacity 0.3s;
-  white-space: nowrap; /* Impedisce il testo su più righe */
-  font-size: 14px;
-  line-height: 1.5;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Aggiunge un'ombra per migliorare la visibilità */
-  overflow: hidden; /* Impedisce al testo di uscire dai bordi */
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-color);
+  transition: var(--transition-smooth);
 }
 
-/* Espande il contenitore se necessario */
 .info-icon:hover .tooltip-text {
   visibility: visible;
   opacity: 1;
-  overflow-x: auto; /* Consente uno scroll orizzontale se il testo è troppo lungo */
-  max-width: 90vw; /* Evita che il tooltip esca dalla larghezza dello schermo */
 }
 
-/* Freccetta del tooltip */
-.tooltip-text::after {
-  content: "";
-  position: absolute;
-  top: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent transparent black transparent;
+/* ==========================================================================
+   STRUTTURE DATI: TABELLE DI SENSORISTICA (Data Tables)
+   ==========================================================================*/
+/* Pannello Medie e Sensibilità */
+.main-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-lg);
+  background-color: var(--bg-secondary);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  flex-wrap: wrap; /* Avvolge elegantemente gli elementi sui display più compatti */
 }
 
-/* Immagine inizialmente nascosta */
-/*.tooltip-image {
-  display: none;
-  position: absolute;
-  bottom: -50px;
-  right: -50px;
-  width: 100px;
-  height: auto;
-  z-index: 1;
-  border-radius: 5px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-}*/
+.inline-control {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
 
+.inline-control label {
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
 
-/*--------------------Area Table--------------------*/
+/* Sezione Slider Temporale */
+.SlideContainer {
+  background-color: var(--bg-secondary);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.slider-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  width: 100%;
+}
+
+.slider {
+  flex: 1;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--border-color);
+  outline: none;
+  transition: opacity 0.2s;
+}
+
+#sliderSpeed {
+  width: 90px;
+}
+
+.slider-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+#playButton {
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  border: none;
+  padding: var(--space-xs) var(--space-md);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+/* Tabella Dati Sensori */
 #tableDiv {
-  position: absolute;
-  width: 700px;
-  height: 100px;
-  bottom: 15%;
-  left: 24%;
-  overflow: auto;
+  width: 100%;
+  max-height: 300px; /* Aumentato per visualizzazione professionale */
+  overflow-y: auto;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-primary);
 }
 
 table {
-  position: relative;
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
   width: 100%;
-  table-layout: auto;
+  border-collapse: collapse;
 }
 
-#tableSensors {
-  position: relative;
-  bottom: 0;
+th, td {
+  padding: var(--space-md);
+  text-align: center; /* Centrato per leggibilità scientifica dei dati */
+  font-size: 14px;
+  border-bottom: 1px solid var(--border-color);
 }
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
+th {
+  background-color: var(--bg-panel);
+  color: var(--text-on-panel);
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+body.darkmode th {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
 }
 
 tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: var(--table-stripe);
 }

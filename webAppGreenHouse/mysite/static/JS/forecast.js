@@ -100,8 +100,6 @@ var heatHotPoints = L.heatLayer(temperature, {
 });
 heatHotPoints.addTo(mymap);
 
-
-
 // Event listener for the slider
 let slider = document.getElementById("myRange"); // id slider
 let valueSlider = document.getElementById("value"); // id value of slider
@@ -225,10 +223,10 @@ function chooseData() {
     if (errorMessage) {
         loadingOverlay.style.display = "none"; // Nasconde la GIF
         alert(errorMessage);
-        //updateMapBtn.disabled = false;
+
     }
     else {
-        //updateMapBtn.disabled = false;
+
         // Crea l'URL della richiesta
         const xhr = new XMLHttpRequest();
         let url = "http://localhost:8000/reqTempDay/?salto=" + sensibility + "&day=" + encodeURIComponent(dateInput) + "&time=" + encodeURIComponent(timeInput) + "&model=" + chooseBox;
@@ -237,23 +235,22 @@ function chooseData() {
             dimJump = Math.floor((intMeanValue / sensibilityValue) / 2);
           url = "http://localhost:8000/reqTempDayMedia/?precisioneSalto=" + sensibility + "&ogniTotMedia=" + strMean + "&day=" + encodeURIComponent(dateInput) + "&time=" + encodeURIComponent(timeInput) + "&model=" + chooseBox + "&dimIntervallo=" + dimJump;
         }
-        //console.log(url);
+
         xhr.open('GET', url);
         xhr.responseType = "json";
         xhr.onload = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             // Aggiorna i dati dei sensori se la richiesta ha successo
             loadingOverlay.style.display = "none"; // Nasconde la GIF
-            //updateMapBtn.disabled = true;
             let data = xhr.response;
             globalData = [];
             globalData = parsefloatGlobalData(data,globalData);
             updateTemperatures(mymap,globalData,0,temperature, heatColdPoints, heatHotPoints);
-            //updateMapBtn.disabled = false;
+
         } else {
             arrAlert[5] = 1;
             generateAlert(arrAlert);
-            //updateMapBtn.disabled = false;
+
             loadingOverlay.style.display = "none"; // Nasconde la GIF in caso di errore
         }
         };
@@ -332,7 +329,7 @@ function dimRange() {
     // Clear existing options
     dimIntervallo.innerHTML = '';
     let step = intMeanValue / sensibilityValue;
-    //console.log(step);
+
     for (let i = 0; i <= step; i++) {
       // Corrected the syntax here
       let option = document.createElement("option");

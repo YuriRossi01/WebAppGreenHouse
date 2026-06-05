@@ -4,7 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25f45edb-ecfd-4f80-ba24-f732c0db07a5" name="Changes" comment="fixed bugs" />
+    <list default="true" id="25f45edb-ecfd-4f80-ba24-f732c0db07a5" name="Changes" comment="fixed bugs">
+      <change afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/darkMode.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/polls/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/polls/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/polls/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/polls/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/JS/forecast.js" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/JS/forecast.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/JS/forecastDays.js" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/JS/forecastDays.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/JS/switchMode.js" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/JS/switchMode.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/autori.html" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/autori.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/forecast.html" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/forecast.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/forecastDays.html" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/forecastDays.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/forecastIstant.html" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/forecastIstant.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/plot.html" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/plot.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/switch-mode.html" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,7 +71,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/morgy/IdeaProjects/webAppGreenHouse&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Yuri/IdeaProjects/WebAppGreenHouse/venv/Lib/site-packages&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.38275862&quot;,
@@ -63,6 +79,11 @@
     &quot;settings.editor.splitter.proportion&quot;: &quot;0.24390244&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Yuri\IdeaProjects\WebAppGreenHouse\venv\Lib\site-packages" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="WebAppGreenHouse" />
@@ -171,7 +192,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780153555957</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="fixed bugs">
+      <option name="closed" value="true" />
+      <created>1780153738071</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1780153738071</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="UnknownFeatures">
