@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25f45edb-ecfd-4f80-ba24-f732c0db07a5" name="Changes" comment="fixed bugs">
-      <change afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/darkMode.html" afterDir="false" />
+    <list default="true" id="25f45edb-ecfd-4f80-ba24-f732c0db07a5" name="Changes" comment="modificato graficamente il tutto">
+      <change afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/images/greenhouse.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/polls/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/polls/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/polls/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/polls/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/JS/constFunction.js" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/JS/constFunction.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/JS/forecast.js" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/JS/forecast.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/JS/forecastDays.js" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/JS/forecastDays.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/JS/switchMode.js" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/JS/switchMode.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/JS/forecastIstant.js" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/JS/forecastIstant.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/autori.html" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/autori.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/forecast.html" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/forecast.html" afterDir="false" />
@@ -19,7 +19,6 @@
       <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/forecastIstant.html" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/forecastIstant.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/plot.html" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/plot.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/switch-mode.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,27 +59,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Yuri/IdeaProjects/WebAppGreenHouse/venv/Lib/site-packages&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.38275862&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
-    &quot;settings.editor.splitter.proportion&quot;: &quot;0.24390244&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Yuri/IdeaProjects/WebAppGreenHouse/webAppGreenHouse/mysite/static/images",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.38275862",
+    "settings.editor.selected.configurable": "vcs.Git",
+    "settings.editor.splitter.proportion": "0.24390244"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Yuri\IdeaProjects\WebAppGreenHouse\webAppGreenHouse\mysite\static\images" />
       <recent name="C:\Users\Yuri\IdeaProjects\WebAppGreenHouse\venv\Lib\site-packages" />
     </key>
   </component>
@@ -200,7 +200,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780153738071</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="modificato graficamente il tutto">
+      <option name="closed" value="true" />
+      <created>1780679411204</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1780679411204</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -233,7 +241,8 @@
     <MESSAGE value="Remove large files from repo before push" />
     <MESSAGE value="add the requirements for the required libraries" />
     <MESSAGE value="fixed bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed bugs" />
+    <MESSAGE value="modificato graficamente il tutto" />
+    <option name="LAST_COMMIT_MESSAGE" value="modificato graficamente il tutto" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

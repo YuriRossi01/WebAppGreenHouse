@@ -284,25 +284,6 @@ img.schemaCNNHome { top:440px; position:absolute; left:1040px; }
 #immagine1Label { left: 1000px; top: 0; position: absolute; }
 #immagine1home { max-width: 100%; height: auto; border-radius: var(--radius-md); box-shadow: var(--shadow-md); }
 
-
-
-
-
-
-/*
-#reset { position: absolute; bottom: 420px; left: 1630px; }
-#labelData { position: absolute; bottom: 370px; left: 1530px; }
-#chooseData { position: absolute; bottom: 340px; left: 1530px; }
-#labelDataEnd { position: absolute; bottom: 370px; left: 1700px; }
-#chooseDataEnd { position: absolute; bottom: 340px; left: 1700px; }
-#labelTime { position: absolute; bottom: 260px; left: 1530px; }
-#time { position: absolute; bottom: 230px; left: 1630px; }
-#labelModel { position: absolute; bottom: 150px; left: 1530px; }
-#model { position: absolute; bottom: 120px; left: 1630px; }
-#updateMapBtn { position: absolute; bottom:40px; left: 1630px; }*/
-
-
-
 /* ==========================================================================
    STRUTTURA MACRO-LAYOUT (FLEXBOX ARCHITECTURE)
    ========================================================================== */
@@ -348,7 +329,7 @@ img.schemaCNNHome { top:440px; position:absolute; left:1040px; }
   box-shadow: var(--shadow-md);
   border: 1px solid var(--border-color);
 }
-/*
+
 .leaflet-bottom.leaflet-left .legend,
 .legend {
   padding: var(--space-sm) var(--space-md);
@@ -375,7 +356,30 @@ img.schemaCNNHome { top:440px; position:absolute; left:1040px; }
   letter-spacing: 0.05em;
   font-weight: 700;
 }
-*/
+/* Stile per i quadratini di colore della legenda */
+.legend i {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin-right: 8px;
+  opacity: 0.85;
+  border-radius: var(--radius-sm, 3px);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+/* Sistema l'allineamento dei testi per non farli andare sotto il quadratino */
+.legend span {
+  font-size: 13px;
+  line-height: 18px;
+  vertical-align: middle;
+}
+
+/* Pulisce i float per evitare che i tag <br> si rompano */
+.legend br {
+  clear: both;
+}
+
 #loading-overlay {
   display: none;
   position: absolute;

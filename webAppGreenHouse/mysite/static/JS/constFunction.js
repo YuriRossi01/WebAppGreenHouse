@@ -137,7 +137,6 @@ function updateSliderMax(len) {
 }
 
 function playSlider(playButton, mymap, globalData, temperature, heatColdPoints, heatHotPoints) {
-   console.log("Stato GlobalData:", globalData);
    let speedElement = document.getElementById("sliderSpeed");
    let slider = document.getElementById("myRange");
    let valueSlider = document.getElementById("value");

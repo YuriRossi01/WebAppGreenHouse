@@ -21,18 +21,19 @@ var legend = L.control({ position:"bottomleft"});
 
 legend.onAdd = function(mymap) {
   var div = L.DomUtil.create("div","legend");
-  div.innerHTML += "<h4>Legend</h4>";
-  div.innerHTML += '<i style="background:red"></i><span>>= 30°C</span><br>';
-  div.innerHTML += '<i style="background:orange"></i><span>25°C >°C >=30°C</span><br>';
-  div.innerHTML += '<i style="background:#FFBF00"></i><span>20°C >°C >=25°C</span><br>';
-  div.innerHTML += '<i style="background:yellow"></i><span>20°C > °C >=20°C</span><br>';
-  div.innerHTML += '<i style="background:lime"></i><span>10°C > °C >=15°C</span><br>';
-  div.innerHTML += '<i style="background:aqua"></i><span>5°C > °C >=10°C</span><br>';
-  div.innerHTML += '<i style="background:blue"></i><span>0°C > °C >=5°C</span><br>';
-  div.innerHTML += '<i style="background:#000080"></i><span><= 0°C</span><br>';
+  div.innerHTML += "<h4>Legenda Termica</h4>";
+
+    div.innerHTML += '<i style="background: #ff0000"></i><span>&gt;= 30°C</span><br>';
+    div.innerHTML += '<i style="background: #ff7f00"></i><span>25°C a 30°C</span><br>';
+    div.innerHTML += '<i style="background: #ffff00"></i><span>20°C a 25°C</span><br>';
+    div.innerHTML += '<i style="background: #00ff00"></i><span>15°C a 20°C</span><br>';
+    div.innerHTML += '<i style="background: #00ffff"></i><span>10°C a 15°C</span><br>';
+    div.innerHTML += '<i style="background: #0000ff"></i><span>0°C a 10°C</span><br>';
+    div.innerHTML += '<i style="background: #000080"></i><span>&lt;= 0°C</span><br>';
 
   return div;
 };
+
 legend.addTo(mymap);
 var globalData = [];
 // Coordinates of the sensors and their detected temperature
@@ -166,11 +167,11 @@ function chooseData() {
         let i=0;
         // Aggiorna i dati dei sensori se la richiesta ha successo0
         let data = xhr.response;
-        console.log("Data: "+data +" tipo: "+ typeof data);
+
         globalData = parsefloatGlobalData(data,globalData);
-        console.log("global ", globalData);
+
         updateTemperatures(mymap,globalData,null,temperature, heatColdPoints, heatHotPoints);
-        console.log("global ", globalData);
+
       } else {
         arrAlert[1] = 1;
         generateAlert(arrAlert);
@@ -209,10 +210,10 @@ function generateAlert(arrAlert) {
 
 function getArrTempToStr(data){
   let dataFloat = JSON.parse(data);
-  console.log("dataFloar", dataFloat);
+
   //let str = data.substring(2,data.length-2);
   globalData = [];
-  console.log("len: ", dataFloat.length);
+
   for( let i = 0; i < dataFloat.length; i++){
     if(dataFloat[i]){
       let convert = parseFloat(dataFloat[i]);
@@ -241,4 +242,3 @@ function initializeTable() {
 // Initial setup
 initializeTable(); // Display table initially
 limitationDate();
-

@@ -22,17 +22,17 @@ tileLayer.addTo(mymap);
 
 var legend = L.control({ position: "bottomleft" });
 
-legend.onAdd = function (mymap) {
-  var div = L.DomUtil.create("div", "legend");
-  div.innerHTML += "<h4>Legend</h4>";
-  div.innerHTML += '<i style="background:red"></i><span>>= 30°C</span><br>';
-  div.innerHTML += '<i style="background:orange"></i><span>25°C >°C >=30°C</span><br>';
-  div.innerHTML += '<i style="background:#FFBF00"></i><span>20°C >°C >=25°C</span><br>';
-  div.innerHTML += '<i style="background:yellow"></i><span>20°C > °C >=20°C</span><br>';
-  div.innerHTML += '<i style="background:lime"></i><span>10°C > °C >=15°C</span><br>';
-  div.innerHTML += '<i style="background:aqua"></i><span>5°C > °C >=10°C</span><br>';
-  div.innerHTML += '<i style="background:blue"></i><span>0°C > °C >=5°C</span><br>';
-  div.innerHTML += '<i style="background:#000080"></i><span><= 0°C</span><br>';
+legend.onAdd = function(mymap) {
+  var div = L.DomUtil.create("div","legend");
+  div.innerHTML += "<h4>Legenda Termica</h4>";
+
+    div.innerHTML += '<i style="background: #ff0000"></i><span>&gt;= 30°C</span><br>';
+    div.innerHTML += '<i style="background: #ff7f00"></i><span>25°C a 30°C</span><br>';
+    div.innerHTML += '<i style="background: #ffff00"></i><span>20°C a 25°C</span><br>';
+    div.innerHTML += '<i style="background: #00ff00"></i><span>15°C a 20°C</span><br>';
+    div.innerHTML += '<i style="background: #00ffff"></i><span>10°C a 15°C</span><br>';
+    div.innerHTML += '<i style="background: #0000ff"></i><span>0°C a 10°C</span><br>';
+    div.innerHTML += '<i style="background: #000080"></i><span>&lt;= 0°C</span><br>';
 
   return div;
 };
