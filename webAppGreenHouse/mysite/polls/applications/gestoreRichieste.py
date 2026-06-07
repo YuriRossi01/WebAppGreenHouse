@@ -9,6 +9,7 @@ from pathlib import Path
 from turtle import clone
 
 import keras
+from keras.layers import InputLayer
 import numpy
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler

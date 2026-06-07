@@ -4,21 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25f45edb-ecfd-4f80-ba24-f732c0db07a5" name="Changes" comment="modificato graficamente il tutto">
-      <change afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/images/greenhouse.png" afterDir="false" />
+    <list default="true" id="25f45edb-ecfd-4f80-ba24-f732c0db07a5" name="Changes" comment="aggiunta file favicon.ico&#10;ovvero greenhouse.png">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/polls/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/polls/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/JS/constFunction.js" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/JS/constFunction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/JS/forecast.js" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/JS/forecast.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/JS/forecastDays.js" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/JS/forecastDays.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/JS/forecastIstant.js" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/JS/forecastIstant.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/static/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/autori.html" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/autori.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/forecast.html" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/forecast.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/forecastDays.html" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/forecastDays.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/forecastIstant.html" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/forecastIstant.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/plot.html" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/templates/plot.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webAppGreenHouse/mysite/polls/applications/gestoreRichieste.py" beforeDir="false" afterPath="$PROJECT_DIR$/webAppGreenHouse/mysite/polls/applications/gestoreRichieste.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +196,15 @@
       <option name="project" value="LOCAL" />
       <updated>1780679411204</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="aggiunta file favicon.ico&#10;ovvero greenhouse.png">
+      <option name="closed" value="true" />
+      <created>1780749757854</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1780749757854</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -242,7 +238,8 @@
     <MESSAGE value="add the requirements for the required libraries" />
     <MESSAGE value="fixed bugs" />
     <MESSAGE value="modificato graficamente il tutto" />
-    <option name="LAST_COMMIT_MESSAGE" value="modificato graficamente il tutto" />
+    <MESSAGE value="aggiunta file favicon.ico&#10;ovvero greenhouse.png" />
+    <option name="LAST_COMMIT_MESSAGE" value="aggiunta file favicon.ico&#10;ovvero greenhouse.png" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
